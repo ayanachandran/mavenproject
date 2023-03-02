@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -137,5 +138,13 @@ public class GeneralUtilities {
 
 	public void clickButton(WebElement element) {
 		element.click();
+	}
+
+	public String ScrollPage(WebDriver driver, WebElement pagetobescrolled) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("window.scrollBy(0,1000)");
+		String result = pagetobescrolled.getText();
+		return result;
+
 	}
 }
