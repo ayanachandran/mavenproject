@@ -1,11 +1,10 @@
-
 <suite name="My Test Suite">
-<listeners>
-<listener class-name="Utilities.ExtentReport" />
-</listeners>
-<test name="My Test">
-<classes>
-<class name="Testcases.ManageProductTc" />
-</classes>
-</test>
+	<listeners>
+		<listener class-name="utilities.ExtendReport" />
+	</listeners>
+	<test name="My Test">
+		<classes>
+			<class name="testcases.AdminpageTC" />
+		</classes>
+	</test>
 </suite>

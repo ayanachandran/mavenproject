@@ -19,7 +19,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import io.opentelemetry.sdk.trace.export.SpanExporter;
 
-public class ExtentReport implements ITestListener {
+public class ExtendReport implements ITestListener {
 	ExtentSparkReporter sparkReporter;
 	ExtentReports reports;
 	ExtentTest test;
@@ -40,8 +40,8 @@ public class ExtentReport implements ITestListener {
 		reports.attachReporter(sparkReporter);
 
 		// System details
-		reports.setSystemInfo("PC Name", "ALViNs");
-		reports.setSystemInfo("OS", "Windows 10");
+		reports.setSystemInfo("PC Name", "Deeraj-Rajendran");
+		reports.setSystemInfo("OS", "Windows 11");
 		reports.setSystemInfo("Browser", "Chrome");
 		sparkReporter.config().setDocumentTitle("Extent Report Sample");
 		sparkReporter.config().setReportName("Report Summary");

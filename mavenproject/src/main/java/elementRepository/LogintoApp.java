@@ -29,21 +29,23 @@ public class LogintoApp {
 	WebElement password;
 	@FindBy(linkText = "Remember Me")
 	WebElement remembermeElement;
+	@FindBy(linkText = " Admin")
+	WebElement loggeduser;
 
 	public void rememberMe() {
 		remembermeElement.click();
 	}
-
+public String ReadLoggedUser() {
+	return gu.getTheLoggedUser(loggeduser);
+}
 	public String verifyTheTextofSignin() {
 		return gu.verifyTheTextofelements(Signinbutton);
 
 	}
 
 	public void loginConsole(String name, String pass) {
-		// gu.loginToApplication(username, password, Signinbutton, name,pass);
-		username.sendKeys(name);
-		password.sendKeys(pass);
-		Signinbutton.click();
+		gu.loginToApplication(username, password, Signinbutton, name,pass);
+	
 	}
 
 	public boolean rememberMeIsEnabled() {

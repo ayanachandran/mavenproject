@@ -2,7 +2,11 @@ package utilities;
 
 import java.awt.event.KeyEvent;
 import java.util.List;
+import java.util.concurrent.Flow.Publisher;
 
+import org.apache.poi.hssf.record.PageBreakRecord.Break;
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +15,7 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import net.bytebuddy.asm.Advice.Return;
 import net.bytebuddy.asm.Advice.OffsetMapping.ForOrigin.Renderer.ForReturnTypeName;
 
 import java.awt.AWTException;
@@ -26,13 +31,11 @@ public class GeneralUtilities {
 
 	}
 
-//public void loginToApplication(WebElement userName, WebElement Password,WebElement Signinbutton,String name, String pass) {
-//	
-//		userName.sendKeys(name);
-//		Password.sendKeys(pass);
-//		Signinbutton.click();
-//		 
-//	}
+	public void loginToApplication(WebElement userName, WebElement Password, WebElement Signinbutton, String name,
+			String pass) {
+		userName.sendKeys(name);
+		Signinbutton.click();
+	}
 
 	public String verifyStyleProperty(WebElement elements, String Propertyvalue) {
 		String colour = elements.getCssValue(Propertyvalue);
@@ -45,6 +48,19 @@ public class GeneralUtilities {
 		String tagname = elements.getTagName();
 		return tagname;
 
+	}
+
+	public String addNewExpenseInExpenseCatagory(WebElement element, WebElement element1, WebElement element2,
+			String value) {
+		element.sendKeys(value);
+		element2.click();
+		String text = element2.getText();
+		return text;
+	}
+
+	public boolean isElementEnabled(WebElement element) {
+		boolean result = element.isEnabled();
+		return result;
 	}
 
 	public String verifyTitleOfTab(WebDriver driver) {
@@ -64,6 +80,16 @@ public class GeneralUtilities {
 		String text = dropdown.getText();
 		return text;
 
+	}
+
+	public String addUsersToAdmnTab(WebElement element1, WebElement element2, WebElement usertype, WebElement searchtab,
+			String value, WebElement alert) {
+		element1.sendKeys(value);
+		element2.sendKeys(value);
+		selectValueFromDropDown(usertype, value);
+		searchtab.click();
+		String alerttext = alert.getText();
+		return alerttext;
 	}
 
 	public boolean verifyTheCheckboxSelection(WebElement element) {
@@ -140,11 +166,40 @@ public class GeneralUtilities {
 		element.click();
 	}
 
+	public String getTheLoggedUser(WebElement element) {
+		String textString = element.getText();
+		return textString;
+
+	}
+
 	public String ScrollPage(WebDriver driver, WebElement pagetobescrolled) {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		jsExecutor.executeScript("window.scrollBy(0,1000)");
 		String result = pagetobescrolled.getText();
 		return result;
+
+	}
+
+	public boolean getStatusOfTheAddedUserInTheUserTab(WebDriver driver, List<WebElement> list2,
+			WebElement usernameelElement, String searchvalue, WebElement subsearchbutton) {
+
+		usernameelElement.click();
+		usernameelElement.sendKeys(searchvalue);
+		subsearchbutton.click();
+		boolean result1 = false;
+		for (int i = 0; i < list2.size(); i++) {
+
+			String searchname = list2.get(i).getText();
+			if (searchname.contains(searchvalue))
+				;
+			{
+
+				result1 = true;
+				break;
+			}
+
+		}
+		return result1;
 
 	}
 }

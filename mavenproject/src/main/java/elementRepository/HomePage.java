@@ -22,9 +22,6 @@ public class HomePage {
 	@FindBy(linkText = "Logout")
 	WebElement logoutbutton;
 
-	@FindBy(linkText = "Push Notifications")
-	WebDriver Pushnotification;
-
 	@FindBy(linkText = "Admin")
 	WebElement admintab;
 
@@ -33,7 +30,7 @@ public class HomePage {
 	}
 
 	public String titleOfNotify() {
-		return gu.verifyTitleOfTab(Pushnotification);
+		return gu.verifyTitleOfTab(driver);
 	}
 
 	public String TagNameofVerifyUserTab() {
@@ -41,14 +38,19 @@ public class HomePage {
 	}
 
 	public String getTheCurrentUrl() {
-		return gu.getTheCurrentPageUrl(Pushnotification);
+		return gu.getTheCurrentPageUrl(driver);
 
 	}
-	public String logoutFromTheApplication()
-	{
+
+	public String logoutFromTheApplication() {
 		gu.clickButton(loggedadmin);
 		gu.clickButton(logoutbutton);
 		return gu.verifyTitleOfTab(driver);
+	}
+
+	public String pageScroll() {
+		return gu.ScrollPage(driver, admintab);
+
 	}
 
 }

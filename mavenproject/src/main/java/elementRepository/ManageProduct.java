@@ -67,7 +67,9 @@ public class ManageProduct {
 	}
 
 	public boolean fileUploadImage() throws AWTException {
-		return gu.fileUpload(driver, "C:\\Users\\rsdee\\Desktop\\sample image.jpg", editbuttonElement);
+		return gu.fileUpload(driver,
+				"System.getProperty(\"user.dir\")" + "src\\main\\resources\\UploadImage\\upload1.png",
+				editbuttonElement);
 	}
 
 	public void clickManageProduct() {
@@ -86,6 +88,10 @@ public class ManageProduct {
 		// return Newicon.getCssValue("bckground-color");
 		return gu.verifyStyleProperty(Newicon, "background-color");
 
+	}
+
+	public String fontfamilyStyleOfSearch() {
+		return gu.verifyStyleProperty(searchElement, "font-family");
 	}
 
 	public String borderColourofNewButton() {
