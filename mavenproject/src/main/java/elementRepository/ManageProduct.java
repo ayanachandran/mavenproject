@@ -54,7 +54,7 @@ public class ManageProduct {
 	}
 
 	public void clickEdit() {
-		editbuttonElement.click();
+		editbuttonElement.click();//dynamic table
 	}
 
 	public void clickChooseFile() {

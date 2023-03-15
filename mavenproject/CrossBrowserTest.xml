@@ -1,0 +1,14 @@
+<suite name="CrossBrowserTesting">
+	<test name="ChromeBrowser">
+		<parameter name="browser" value="chrome"></parameter>
+		<classes>
+			<class name="testcases.HomePageTc"></class>
+		</classes>
+	</test>
+	<test name="EdgeBrowser">
+		<parameter name="browser" value="edge"></parameter>
+		<classes>
+			<class name="testcases.HomePageTc"></class>
+		</classes>
+	</test>
+</suite>

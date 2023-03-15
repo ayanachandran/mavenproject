@@ -29,24 +29,21 @@ public class BaseClass {
 		prop.load(ip);//
 	}
 
-
 	@BeforeMethod(alwaysRun = true)
 	@Parameters("browser")
 	public void beforeMethod(String browsername) throws IOException {
-	testBasic();
-	if(browsername.equals("chrome")) {
-			driver=new ChromeDriver();
-		}
-		else if (browsername.equals("edge")) {
-			driver=new EdgeDriver();
-		}
-		else if(browsername.equals("firefox")) {
-			driver=new FirefoxDriver();
-		
-		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(5000));
-		driver.get(prop.getProperty("BaseURL"));
-		driver.manage().window().maximize();
+		testBasic();
+		if (browsername.equals("chrome")) {
+			driver = new ChromeDriver();
+		} else if (browsername.equals("edge")) {
+			driver = new EdgeDriver();
+		} else if (browsername.equals("firefox")) {
+			driver = new FirefoxDriver();
+
+			// driver = new ChromeDriver();
+			driver.manage().timeouts().implicitlyWait(Duration.ofMillis(5000));
+			driver.get(prop.getProperty("BaseURL"));
+			driver.manage().window().maximize();
 		}
 	}
 
